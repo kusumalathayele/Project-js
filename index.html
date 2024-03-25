@@ -480,8 +480,8 @@
                 let btn1 = document.createElement("button");
                 btn1.innerText = "Details";
                 btn1.addEventListener("click", () => {
-                    window.location.assign("./details.html");
-                    localStorage.setItem("productDetails", JSON.stringify(val));
+                window.location.assign("./details.html");
+                localStorage.setItem("productDetails", JSON.stringify(val));
                 });
                 productCard.appendChild(btn1);
                 return productCard;

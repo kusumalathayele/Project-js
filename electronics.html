@@ -44,9 +44,9 @@
     <div id="container"></div>
     <script>
         function addToCart(product){
-            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; // Retrieve existing cart items or initialize as empty array
-            cartItems.push(product); // Add the new product to the cart
-            localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Save updated cart items to local storage
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; 
+            cartItems.push(product); 
+            localStorage.setItem("cartItems", JSON.stringify(cartItems)); 
         }
 
         var productsData = JSON.parse(localStorage.getItem("products"));
