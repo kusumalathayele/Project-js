@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        #cart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(pink, orange);
+        }
+        .cart-item {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 8px;
+            text-align: center;
+            position: relative; 
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: auto;
+            height: 80px;
+            background-color: aqua;
+            padding: 0 20px;
+        }
+        .nav h1 {
+            text-align: center;
+        }
+        .nav button {
+            background-color: blueviolet;
+            padding: 8px;
+            color: antiquewhite;
+        }
+        .cart-buttons {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+        }
+        .cart-buttons button {
+            margin: 5px;
+        }
+        .button1{
+            background-color: aqua;
+        }
+        .button2{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h1>Your Cart</h1>
+        <a href="./index.html"><button>Back to Home</button></a>
+    </div>
+    <div id="cart-container"></div>
+
+    <script>
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        var cartContainer = document.getElementById("cart-container");
+        cartItems.forEach(product => {
+            var cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            var img = document.createElement("img");
+            img.src = product.image;
+            cartItem.appendChild(img);
+
+            var title = document.createElement("p");
+            title.innerHTML = `<strong>Title:</strong> ${product.title}`;
+            cartItem.appendChild(title);
+
+            var price = document.createElement("p");
+            price.innerHTML = `<strong>Price:</strong> ${product.price}`;
+            cartItem.appendChild(price);
+
+            var buyNowBtn = document.createElement("button");
+            buyNowBtn.className="button2"
+            buyNowBtn.innerText = "Buy Now";
+            buyNowBtn.addEventListener("click", () => {
+                window.location.assign("./register.html");
+            });
+
+            var deleteBtn = document.createElement("button");
+            deleteBtn.className="button1"
+            deleteBtn.innerText = "Delete";
+            deleteBtn.addEventListener("click", () => {
+                cartItems = cartItems.filter(item => item.id !== product.id);
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                cartContainer.removeChild(cartItem);
+            });
+
+            var cartButtons = document.createElement("div");
+            cartButtons.classList.add("cart-buttons");
+            cartButtons.appendChild(buyNowBtn);
+            cartButtons.appendChild(deleteBtn);
+            cartItem.appendChild(cartButtons);
+
+            cartContainer.appendChild(cartItem);
+        });
+    </script>
+</body>
+</html>

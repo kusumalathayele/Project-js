@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        #container {
+            background-image: linear-gradient(pink, orange);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+         }
+        .card{
+            width: 400px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 8px;
+            box-shadow:3px 3px 10px orangered;
+            text-align: center;
+            color: black;
+            font-size: 20px;  
+           }
+        .card img{
+            width: 200px;
+            height: 200px;
+            border-radius: 35%;
+            border: 2px solid black;
+            box-shadow: 2px 2px 6px orangered;
+           }
+           .card button{
+            padding: 10px;
+            background-color: coral;
+            font-size: 20px;
+            margin: 10px;
+            border-radius: 30px;
+           }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        function addToCart(product){
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; // Retrieve existing cart items or initialize as empty array
+            cartItems.push(product); // Add the new product to the cart
+            localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Save updated cart items to local storage
+        }
+
+        var productsData = JSON.parse(localStorage.getItem("products"));
+        var menProducts = productsData.filter((val, ind, arr) => {
+            return val.category === "women's clothing";
+        });
+
+        var divget = document.getElementById("container");
+        menProducts.forEach(product => {
+            var card = document.createElement("div");
+            card.className = "card";
+
+            var img = document.createElement("img");
+            img.setAttribute("src", product.image);
+            card.appendChild(img);
+
+            var title = document.createElement("p");
+            title.innerHTML = `<strong>Title:</strong> ${product.title}`;
+            card.appendChild(title);
+
+            var price = document.createElement("p");
+            price.innerHTML = `<strong>Price:</strong> ${product.price}`;
+            card.appendChild(price);
+
+            var rate = document.createElement("p");
+            rate.innerHTML = `<strong>Rating-Rate:</strong> ${product.rating.rate}`;
+            card.appendChild(rate);
+
+            var description = document.createElement("p");
+            description.innerHTML = `<strong>Description:</strong> ${product.description}`;
+            card.appendChild(description);
+
+            var rate2 = document.createElement("p");
+            rate2.innerHTML = `<strong>Rating-count:</strong> ${product.rating.count}`;
+            card.appendChild(rate2);
+
+            var button = document.createElement("button");
+            button.innerHTML = "Add To Cart";
+            button.addEventListener("click", () => {
+                addToCart(product);
+                alert("Product added to cart!");
+            });
+            card.appendChild(button);
+
+
+        var btn1=document.createElement("button")
+        btn1.innerHTML="Back To Home"
+        btn1.addEventListener("click",()=>{
+            window.location.assign("./index.html")
+        })
+        card.appendChild(btn1)
+        divget.appendChild(card)
+        })
+    
+</script>
+</body>
+</html>

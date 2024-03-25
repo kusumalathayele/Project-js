@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body{
+            background-image:linear-gradient(blue,white);
+        }
+        .details {
+            margin-bottom: 200px;
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-top: 100px;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid black;
+            background-image: linear-gradient(pink,orange);
+        }
+        .details img {
+            width: 120px;
+            height: 120px;
+            padding-left: 40%;
+        }
+        #backBtn{
+            background-color: pink;
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+        <img id="image" src="" alt="Product Image">
+        <div id="info">
+        </div>
+        <button id="backBtn">Back to Home</button>
+    </div>
+
+    <script>
+        var productDetails = JSON.parse(localStorage.getItem("productDetails"))
+        let image = document.getElementById("image")
+        let infoDiv = document.getElementById("info")
+        image.setAttribute("src", productDetails.image)
+        infoDiv.innerHTML = `
+            <h2>${productDetails.title}</h2>
+            <p><strong>Price:</strong> $${productDetails.price}</p>
+            <p><strong>Description:</strong> ${productDetails.description}</p>
+            <p><strong>Category:</strong> ${productDetails.category}</p>
+            <p><strong>Rating:</strong> ${productDetails.rating.rate} (${productDetails.rating.count} reviews)</p>
+        `;
+        
+        let btn = document.getElementById("backBtn");
+        btn.addEventListener("click",()=>{
+          window.location.assign("./index.html")
+        });
+    </script>
+</body>
+</html>

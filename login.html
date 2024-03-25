@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUztzzws8ermraZAnDPQpbImW4mRBoV8MfPQ&usqp=CAU");
+            background-repeat: no-repeat;
+            background-color:white;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 200px;
+        }
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            color: rgb(7, 7, 7);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: 8px 4px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 600px) {
+    body {
+        margin: 50px;
+    }
+    form {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+    input {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <form id="loginForm">
+        <h2>Login</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" onclick="validateForm()">Login</button>
+        <button id="hello">order</button>
+    </form>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+    
+            if (username === "" || password === "") {
+                alert('Username and password are required');
+            }
+            var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+            if (!password.match(passwordRegex)) {
+                alert('Password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*)');
+            }
+            alert('Login successful!');
+        }
+        let Order = document.getElementById("hello");
+        Order.addEventListener("click", () => {
+            window.location.assign("./order.html");
+        });
+
+    </script>
+</body>
+</html>
