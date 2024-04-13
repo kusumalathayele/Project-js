@@ -69,7 +69,6 @@
             margin: 20px;
             padding: 20px;
             border: 1px solid black;
-            border-radius: 10px;
             box-shadow: 3px 3px 10px orangered;
             text-align: center;
             color: black;
@@ -78,7 +77,6 @@
         .product-card img {
             width: 200px;
             height: 200px;
-            border-radius: 30px;
             margin-bottom: 10px;
             border: 2px solid orange;
             box-shadow: 2px 2px 5px palevioletred;
@@ -91,7 +89,6 @@
             color: black;
             border: none;
             padding: 8px 16px;
-            border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -99,106 +96,96 @@
             background-color: aqua;
             color: black;
         }
-        .navbar {
-            background-image: linear-gradient(pink, orange);
-            color: black;
-            position: fixed;
-            width: 100%;
-            padding: 40px;
-            text-align: center;
-            font-size: 30px;
-        }
-        .navbar a {
-            color: black;
-            text-decoration: none;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 30px;
-            filter: drop-shadow(10px 10px 10px orangered);
-        }
-        @media only screen and (max-width: 768px) {
-    #nav {
-        padding: 20px;
-        width: 100%;
-    }
-    #nav a {
-        font-size: 20px;
-    }
-    .main {
-        flex-direction: column;
-    }
-    #flower {
-        width: 100%;
-    }
-    #content h1{
-        font-size: 20px;
-         padding: 50px;
-    }
-    #content {
-        padding: 20px;
-        padding-left: 40px;
-        width: 100%;
-    }
-    .product-card {
-        width: calc(50% - 40px);
-        margin: 10px;
-        padding: 10px;
-        font-size: 16px;
-    }
-    .product-card img {
-        border-radius: 20px;
-        margin-bottom: 5px;
-    }
-    #footer {
-        padding: 5px;
-    }
-    #footer h1 {
-        font-size: 18px;
-    }
-    .navbar {
-        padding: 20px;
-        font-size: 20px;
-    }
+
+
+@media only screen and (max-width: 768px) {
+  #nav {
+    padding: 20px;
+  }
+  #nav a {
+    font-size: 20px;
+    padding: 10px;
+    display: block; 
+  }
+  .main {
+    flex-direction: column;
+  }
+  #flower {
+    width: 100%;
+  }
+  #flower img {
+    max-width: 100%;
+    height: auto;
+  }
+  #content {
+    padding: 20px;
+    width: 100%;
+    font-style: italic;
+    font-size: 20px; 
+    padding-left: 0;
+    text-align: center; 
+  }
+  .product-card {
+    width: calc(50% - 20px);
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .product-card img {
+    width: 100%; 
+    height: auto;
+    margin-bottom: 10px;
+    border: 2px solid orange;
+    box-shadow: 2px 2px 5px palevioletred;
+  }
+  #footer {
+    padding: 10px;
+  }
+  #footer h1 {
+    font-size: 18px;
+  }
+  .navbar {
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
 }
 
-@media only screen and (min-width:1024px){
-    #nav {
-        padding: 40px;
-    }
-    #nav a {
-        font-size:30px;
-        padding: 80px;
-    }
-    .main {
-        flex-direction: row;
-    }
-    #content {
-        width: 50%;
-        padding: 50px;
-        padding-left: 80px;
-    }
-    #flower {
-        width: 50%;
-    }
-    .product-card {
-        width:200px;
-        margin: 20px;
-        padding: 20px;
-        font-size: 20px;
-    }
-    .product-card img {
-        border-radius: 30px;
-        margin-bottom: 10px;
-    }
-    #footer {
-        padding: 10px;
-    }
-    #footer h1 {
-        font-size: 24px;
-    }
+@media only screen and (min-width:1024px) {
+  #nav {
+    padding: 40px;
+  }
+  #nav a {
+    font-size: 30px;
+    padding: 80px;
+  }
+  .main {
+    flex-direction: row;
+  }
+  #content {
+    width: 50%;
+    padding: 50px;
+    padding-left: 80px;
+  }
+  #flower img {
+    width: 100%;
+  }
+  .product-card {
+    width: 200px;
+    margin: 20px;
+    padding: 20px;
+    font-size: 20px;
+  }
+  .product-card img {
+    margin-bottom: 10px;
+  }
+  #footer {
+    padding: 10px;
+  }
+  #footer h1 {
+    font-size: 24px;
+  }
 }
-
-
-</style>
 
 </style>
 </head>
