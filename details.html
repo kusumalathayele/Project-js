@@ -9,7 +9,9 @@
         body{
             background-image: linear-gradient(pink,orange);
         }
-        .details {
+        #details {
+            display:grid;
+            grid-template-columns: repeat(2,400px);
             margin-bottom: 200px;
             margin-left: 200px;
             margin-right: 200px;
@@ -19,15 +21,18 @@
             border: 2px solid black;
             background-color: antiquewhite;
         }
-        .details img {
-            width: 120px;
-            height: 120px;
-            padding-left: 40%;
+        .imgdiv{
+            width:80%;
+            height:300px ;
         }
+    
         #backBtn{
             background-color: pink;
             margin-top: 20px; 
+            width:fit-content;
+            font-size: 20px;
         }
+
         @media only screen and (max-width:767px) {
             .details {
                 margin: 50px auto;
@@ -43,17 +48,29 @@
     </style>
 </head>
 <body>
-    <div class="details">
-        <img id="image" src="" alt="Product Image">
-        <div id="info"></div>
+    <div id="details">
+        
+      
+    </div>
+    <div>
+
         <button id="backBtn">Back to Home</button>
     </div>
+    
 
     <script>
         var productDetails = JSON.parse(localStorage.getItem("productDetails"))
-        let image = document.getElementById("image")
-        let infoDiv = document.getElementById("info")
+        
+      var imgdiv=document.createElement("div")
+
+        let image = document.createElement("img")
+        image.className="imgdiv"
         image.setAttribute("src", productDetails.image)
+        console.log(productDetails.image)
+        imgdiv.append(image)
+
+        let infoDiv = document.createElement("div")
+        infoDiv.className="info"
         infoDiv.innerHTML = `
             <h2>${productDetails.title}</h2>
             <p><strong>Price:</strong> $${productDetails.price}</p>
@@ -62,13 +79,19 @@
             <p><strong>Rating:</strong> ${productDetails.rating.rate} (${productDetails.rating.count} reviews)</p>
         `;
         
-        let btn = document.getElementById("backBtn");
+     
+
+        var details=document.getElementById("details")
+        console.log(details)
+         
+          let btn = document.getElementById("backBtn");
         btn.addEventListener("click",()=>{
           window.location.assign("./index.html")
-        });
-
-
+          
         
+
+        });
+        details.append(imgdiv,infoDiv,btn)
     </script>
 </body>
 </html>

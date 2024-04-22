@@ -8,6 +8,8 @@
     <style>
        body {
           overflow-x: hidden;
+          margin: 0;
+          padding: 0;
           background-image: linear-gradient(orange, pink);
         }
         #nav {
@@ -57,30 +59,53 @@
             text-align: center;
         }
         #container {
-            width: 100%;
-            display: flex;
+            /* width: 100%;
+            display: grid;
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
+            grid-template-columns: repeat(4,350px);
             padding-top: 20px;
             padding-left: 30px;
+            gap: 10px;
+            margin: auto; */
+            /* margin-left: 50px; */
+            display: grid;
+            padding: 80px;
+            padding-top: -150px;
+            margin-top: -90px;
+            grid-template-columns: repeat(4,300px);
+        /* border: 1px solid red; */
         }
         .product-card {
             width: 300px;
             margin: 20px;
             padding: 20px;
-            border: 1px solid black;
+            /* border: 1px solid blue; */
             /* box-shadow: 3px 3px 10px orangered; */
             text-align: center;
             color: black;
             background-color:cornsilk;
             font-size: 20px;
+            /* margin-left: 30px; */
         }
+        
+  .imgdiv{
+     /* border: 1px solid teal; */
+    width: 100%;
+}
+
+.Text{
+    text-align: center;
+    height: 150px;
+    text-align: justify;
+    overflow-y:scroll;
+    
+}
         .product-card img {
             width: 200px;
             height: 200px;
             margin-bottom: 10px;
-            /* border: 2px solid rgb(15, 15, 15); */
-            /* box-shadow: 2px 2px 5px palevioletred; */
         }
         .product-card p {
             margin-bottom: 10px;
@@ -139,6 +164,7 @@
     border: 2px solid orange;
     box-shadow: 2px 2px 5px palevioletred;
   }
+
   #footer {
     padding: 10px;
   }
@@ -204,7 +230,7 @@
             <h1>Find Your Own Happiness</h1>
         </div>
         <div id="flower">
-            <img src="./colur.jpg" alt="color image">
+            <img style="width: 100%;" src="./colur.jpg" alt="color image">
         </div> 
     </div>
 
@@ -465,22 +491,27 @@
             return products.map((val, ind, arr) => {
                 let productCard = document.createElement("div");
                 productCard.className = "product-card";
+                  let imgdiv=document.createElement("div");
+                      imgdiv.className="imgdiv";
 
                 let img = document.createElement("img");
                 img.setAttribute("src", val.image);
-                productCard.appendChild(img);
+               imgdiv.append(img)
+
+                let div=document.createElement("div");
+                div.className="Text";
 
                 let title = document.createElement("p");
                 title.innerText = val.title;
-                productCard.appendChild(title);
+              
 
                 let price = document.createElement("p");
                 price.innerText = "$" + val.price;
-                productCard.appendChild(price);
+           
 
                 let category = document.createElement("p");
                 category.innerText = val.category;
-                productCard.appendChild(category);
+                // productCard.appendChild(category);
 
                 let btn1 = document.createElement("button");
                 btn1.innerText = "Details";
@@ -488,7 +519,10 @@
                 window.location.assign("./details.html");
                 localStorage.setItem("productDetails", JSON.stringify(val));
                 });
-                productCard.appendChild(btn1);
+
+                div.append(title,category,price);
+
+                productCard.append(imgdiv,div,btn1)
                 return productCard;
             });
         }

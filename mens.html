@@ -6,11 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Men's Products</title>
     <style>
+         body{
+          margin: 0px;
+           padding: 0px;
+           overflow: scroll;
+            overflow-x: hidden;
+          }
           #nav {
             background-image: linear-gradient(orange, pink);
             width: 100%;
             padding: 40px;
-            border: 2px solid black;
+            
         }
         #nav a {
             text-align: center;
@@ -24,7 +30,7 @@
             background-image: linear-gradient(orange, pink);
             width: 100%;
             padding: 10px;
-            border: 2px solid black;
+            
         }
         #footer h1 {
             text-align: center;
@@ -65,7 +71,17 @@
             margin: 10px;
             border-radius: 30px;
         }
-      
+
+        .imgdiv{
+            width: 100%;
+        }
+      .text{
+            height: 150px;
+            text-align: justify;
+            overflow-y:scroll;
+      }
+
+
     </style>
 </head>
 <body>
@@ -94,32 +110,43 @@
 
         var divget = document.getElementById("container");
         menProducts.forEach(product => {
+            console.log(product);
             var card = document.createElement("div");
             card.className = "card";
+            
+            var imgdiv=document.createElement("div")
+            imgdiv.className="imgdiv"
 
             var img = document.createElement("img");
             img.setAttribute("src", product.image);
-            card.appendChild(img);
+            // card.appendChild(img);
+            imgdiv.appendChild(img)
+
+
+            var div=document.createElement("div")
+            div.className="text"
 
             var title = document.createElement("p");
             title.innerHTML = `<strong>Title:</strong> ${product.title}`;
-            card.appendChild(title);
+            // card.appendChild(title);
 
             var price = document.createElement("p");
             price.innerHTML = `<strong>Price:</strong> ${product.price}`;
-            card.appendChild(price);
+            // card.appendChild(price);
 
             var rate = document.createElement("p");
             rate.innerHTML = `<strong>Rating-Rate:</strong> ${product.rating.rate}`;
-            card.appendChild(rate);
+            // card.appendChild(rate);
 
             var description = document.createElement("p");
             description.innerHTML = `<strong>Description:</strong> ${product.description}`;
-            card.appendChild(description);
+            // card.appendChild(description);
 
             var rate2 = document.createElement("p");
             rate2.innerHTML = `<strong>Rating-count:</strong> ${product.rating.count}`;
-            card.appendChild(rate2);
+            // card.appendChild(rate2);
+
+           div.append(title,price,rate,description,rate2)
 
             var button = document.createElement("button");
             button.innerHTML = "Add To Cart";
@@ -127,7 +154,7 @@
                 addToCart(product);
                 alert("Product added to cart!");
             });
-            card.appendChild(button);
+            // card.appendChild(button);
 
 
         var btn1=document.createElement("button")
@@ -135,7 +162,7 @@
         btn1.addEventListener("click",()=>{
             window.location.assign("./index.html")
         })
-        card.appendChild(btn1)
+        card.append(imgdiv,div,button,btn1)
         divget.appendChild(card)
         })
     
